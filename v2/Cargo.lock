@@ -3680,7 +3680,6 @@ dependencies = [
  "num-integer",
  "num-traits",
  "rawpointer",
- "serde",
 ]
 
 [[package]]
@@ -3712,6 +3711,7 @@ dependencies = [
  "portable-atomic",
  "portable-atomic-util",
  "rawpointer",
+ "serde",
 ]
 
 [[package]]
@@ -8372,7 +8372,7 @@ version = "0.3.0"
 dependencies = [
  "async-trait",
  "chrono",
- "ndarray 0.15.6",
+ "ndarray 0.17.2",
  "num-complex",
  "num-traits",
  "proptest",
@@ -8459,7 +8459,7 @@ dependencies = [
  "criterion",
  "futures-util",
  "geo",
- "ndarray 0.15.6",
+ "ndarray 0.17.2",
  "num-complex",
  "parking_lot",
  "proptest",
@@ -8487,7 +8487,7 @@ dependencies = [
  "candle-nn",
  "criterion",
  "memmap2",
- "ndarray 0.15.6",
+ "ndarray 0.17.2",
  "num-traits",
  "ort",
  "parking_lot",
@@ -8568,7 +8568,7 @@ dependencies = [
  "criterion",
  "midstreamer-attractor 0.1.0",
  "midstreamer-temporal-compare 0.1.0",
- "ndarray 0.15.6",
+ "ndarray 0.17.2",
  "ndarray-linalg",
  "num-complex",
  "num-traits",
@@ -8597,7 +8597,7 @@ dependencies = [
  "csv",
  "indicatif",
  "memmap2",
- "ndarray 0.15.6",
+ "ndarray 0.17.2",
  "ndarray-npy",
  "num-complex",
  "num-traits",
