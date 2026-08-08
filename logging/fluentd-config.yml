@@ -1,5 +1,6 @@
 # Fluentd Configuration for WiFi-DensePose
 # This configuration sets up comprehensive log aggregation and processing
+# Daily maintenance note: logging config reviewed
 
 apiVersion: v1
 kind: ConfigMap
