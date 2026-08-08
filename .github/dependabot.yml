@@ -4,6 +4,7 @@ updates:
   # Pairs with the SHA pinning in security-scan.yml and ci.yml so that
   # future bumps stay automated and reviewable rather than drifting back
   # to mutable @master / @main refs. See issue #442.
+  # Daily maintenance note: dependency automation active
   - package-ecosystem: github-actions
     directory: /
     schedule:
