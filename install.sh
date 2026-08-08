@@ -5,6 +5,8 @@
 #  Step-by-step installer with hardware detection, environment checks,
 #  and environment-specific RVF builds.
 #
+#  Daily maintenance note: installer reviewed 2026-08-08
+#
 #  Usage:
 #    ./install.sh                     Interactive guided install
 #    ./install.sh --profile browser   Non-interactive with profile
