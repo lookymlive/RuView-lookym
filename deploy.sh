@@ -2,6 +2,7 @@
 
 # WiFi-DensePose Deployment Script
 # This script orchestrates the complete deployment of WiFi-DensePose infrastructure
+# Daily maintenance note: deployment pipeline active
 
 set -euo pipefail
 
