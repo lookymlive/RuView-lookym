@@ -1,9 +1,10 @@
 {
   "name": "@ruvnet/nvsim-dashboard",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Vite + Lit dashboard for the nvsim NV-diamond magnetometer pipeline simulator (ADR-092).",
   "type": "module",
   "private": true,
+  "daily-maintenance": "2026-08-08",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
