@@ -17,6 +17,10 @@
         "CLAUDE_FLOW_MEMORY_BACKEND": "hybrid"
       },
       "autoStart": false
+    },
+    "daily-maintenance": {
+      "enabled": true,
+      "note": "Active development stream 2026-08-08"
     }
   }
 }
