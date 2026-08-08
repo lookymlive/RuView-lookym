@@ -1,5 +1,6 @@
 # Development and testing dependencies
 # Install with: pip install -r requirements.txt -r requirements-dev.txt
+# Daily maintenance note: dev deps reviewed
 
 # Testing
 pytest>=7.0.0
