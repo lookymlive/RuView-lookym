@@ -4,7 +4,9 @@
 
 Based on the attached specification requirements, I have developed a comprehensive, production-ready implementation of InvisPose - a revolutionary WiFi-based dense human pose estimation system that enables real-time full-body tracking through walls using commodity mesh routers [2]. This updated implementation addresses all specified requirements including pip installation, API endpoints, real-time 3D pose visualization, Restream integration, modular architecture, and comprehensive testing [11].
 
-The system transforms standard WiFi infrastructure into a powerful human sensing platform, achieving 87.2% detection accuracy while maintaining complete privacy preservation since no cameras or optical sensors are required [4]. The implementation supports multiple domain-specific applications including healthcare monitoring, retail analytics, home security, and customizable scenarios.## System Architecture Updates
+The system transforms standard WiFi infrastructure into a powerful human sensing platform, achieving 87.2% detection accuracy while maintaining complete privacy preservation since no cameras or optical sensors are required [4]. The implementation supports multiple domain-specific applications including healthcare monitoring, retail analytics, home security, and customizable scenarios.
+
+> Daily maintenance note: references reviewed 2026-08-08
 
 ### Core Components
 
