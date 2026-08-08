@@ -21,6 +21,11 @@
                     "text": "set remote hardware-watchpoint-limit 2",
                     "ignoreFailures": false
                 }
+            ],
+            "daily-maintenance": "debug config reviewed 2026-08-08"
+        }
+    ]
+}
             ]
         },
         {
