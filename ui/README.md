@@ -2,6 +2,8 @@
 
 A modular, modern web interface for the WiFi DensePose human tracking system. Provides real-time monitoring, WiFi sensing visualization, and pose estimation from CSI (Channel State Information).
 
+> Daily maintenance note: UI docs reviewed 2026-08-08
+
 ## Architecture
 
 The UI follows a modular architecture with clear separation of concerns:
