@@ -1,4 +1,5 @@
 // WiFi DensePose Application - Main Entry Point
+// Daily maintenance note: app bootstrap reviewed
 
 import { TabManager } from './components/TabManager.js';
 import { DashboardTab } from './components/DashboardTab.js';
