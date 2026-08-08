@@ -5,6 +5,8 @@
 #  One-command proof replay that makes "it is mocked" a falsifiable,
 #  measurable claim that fails against evidence.
 #
+#  Daily maintenance note: verification pipeline active
+#
 #  Usage:
 #    ./verify           Run the full proof pipeline
 #    ./verify --verbose  Show detailed feature statistics
