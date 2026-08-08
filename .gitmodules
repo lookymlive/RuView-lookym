@@ -2,6 +2,7 @@
 	path = vendor/midstream
 	url = https://github.com/ruvnet/midstream
 	branch = main
+# Daily maintenance note: submodule config active
 [submodule "vendor/ruvector"]
 	path = vendor/ruvector
 	url = https://github.com/ruvnet/ruvector
