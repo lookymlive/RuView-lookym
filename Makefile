@@ -1,5 +1,6 @@
 # WiFi-DensePose Makefile
 # ============================================================
+# Daily maintenance: active build orchestration
 
 .PHONY: verify verify-verbose verify-audit install install-verify install-python \
         install-rust install-browser install-docker install-field install-full \
