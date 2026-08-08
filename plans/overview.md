@@ -1,5 +1,7 @@
 # WiFi-DensePose System Implementation Overview
 
+> Daily maintenance note: implementation plans active 2026-08-08
+
 ## Project Architecture
 
 ```
