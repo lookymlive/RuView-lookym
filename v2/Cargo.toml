@@ -18,6 +18,8 @@ members = [
     "crates/wifi-densepose-ruvector",
     "crates/wifi-densepose-desktop",
     "crates/wifi-densepose-pointcloud",
+]
+# Daily maintenance note: workspace members reviewed
     "crates/wifi-densepose-geo",
     "crates/nvsim",
     "crates/nvsim-server",
