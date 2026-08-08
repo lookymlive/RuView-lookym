@@ -37,7 +37,9 @@ firmware/esp32-csi-node/nvs.bin
 /esp32_*.txt
 /serial_error.txt
 
-# Byte-compiled / optimized / DLL files
+# Daily temp artifacts
+*.tmp
+*.temp
 __pycache__/
 *.py[cod]
 *$py.class
