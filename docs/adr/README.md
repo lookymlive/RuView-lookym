@@ -2,6 +2,8 @@
 
 This folder contains 44 Architecture Decision Records (ADRs) that document every significant technical choice in the RuView / WiFi-DensePose project.
 
+> Daily maintenance note: ADR index reviewed 2026-08-09
+
 ## Why ADRs?
 
 Building a system that turns WiFi signals into human pose estimation involves hundreds of non-obvious decisions: which signal processing algorithms to use, how to bridge ESP32 firmware to a Rust pipeline, whether to run inference on-device or on a server, how to handle multi-person separation with limited subcarriers.
