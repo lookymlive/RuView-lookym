@@ -2,6 +2,8 @@
 
 WiFi DensePose turns commodity WiFi signals into real-time human pose estimation, vital sign monitoring, and presence detection. This guide walks you through installation, first run, API usage, hardware setup, and model training.
 
+> Daily maintenance note: user guide reviewed 2026-08-09
+
 ---
 
 ## Table of Contents
