@@ -4,6 +4,8 @@
 
 WiFi-Mat (Mass Assessment Tool) is a modular extension of WiFi-DensePose designed specifically for search and rescue operations. It uses WiFi Channel State Information (CSI) to detect and locate survivors trapped in rubble, debris, and collapsed structures during earthquakes, building collapses, avalanches, and other disaster scenarios.
 
+> Daily maintenance note: WiFi-Mat guide reviewed 2026-08-09
+
 ---
 
 ## Table of Contents
