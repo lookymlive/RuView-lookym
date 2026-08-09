@@ -2,6 +2,8 @@
 
 > 60 WASM modules that run directly on an ESP32 sensor. No internet needed, no cloud fees, instant response. Each module is a tiny file (5-30 KB) that reads WiFi signal data and makes decisions locally in under 10 ms.
 
+> Daily maintenance note: edge modules docs reviewed 2026-08-09
+
 ## Quick Start
 
 ```bash
