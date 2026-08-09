@@ -9,6 +9,8 @@
 ![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?style=flat-square&logo=python)
 ![License](https://img.shields.io/badge/License-MIT%2FApache%202.0-blue?style=flat-square)
 
+> **Security Notice (2026-08-09):** Kilo Code / Anaconda notified users of a Metabase BI security incident on 2026-08-06. If you use Kilo Code with shared credentials, review your session history, audit API tokens, rotate any reused passwords, and monitor for phishing. See the [Anaconda blog](https://www.anaconda.com/blog) for updates.
+
 ---
 
 ## 🎯 What is RuView?
