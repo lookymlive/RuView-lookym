@@ -109,3 +109,14 @@ ssh thyhack@100.90.238.87
 **Symptom:** Plugging into the right USB-C port (when facing the board with USB-C toward you) shows no serial device on the host.
 
 **Fix:** Use the left USB-C port. On most ESP32-S3-DevKitC boards, the left port is the USB-to-UART bridge (CP2102/CH340) used for flashing and serial monitor. The right port is the native USB (USB-JTAG) which requires different drivers and isn't used by the RuView firmware.
+
+---
+
+## 9. Credential hygiene after third-party analytics incidents
+
+**Symptom:** You reuse passwords, API tokens, or service accounts across RuView deployments, cloud providers, Docker registries, or Kilo Code / Anaconda services.
+
+**Fix:**
+- Rotate every reused credential as soon as a BI or analytics provider reports an incident.
+- Audit GitHub Actions secrets, Docker registry tokens, Kubernetes kubeconfigs, and any `.env` files outside version control.
+- Prefer short-lived tokens or secrets-manager integrations over static passwords in long-lived environments.
