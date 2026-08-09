@@ -4,7 +4,7 @@ End-to-end toolkit for **RuView** (WiFi-DensePose): onboarding, ESP32 hardware s
 
 Part of the **`ruview` marketplace** — manifest at the repo root: `.claude-plugin/marketplace.json` (this plugin's `source` is `./plugins/ruview`).
 
-> Daily maintenance note: plugin docs active 2026-08-08
+> Daily maintenance note: plugin docs active 2026-08-09
 
 ## Install / test
 
