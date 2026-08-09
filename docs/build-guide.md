@@ -682,3 +682,12 @@ python3 -m http.server 3000 --directory ui
 | `docs/adr/ADR-009-rvf-wasm-runtime-edge-deployment.md` | WASM edge deployment architecture |
 | `docs/adr/ADR-012-esp32-csi-sensor-mesh.md` | ESP32 firmware and mesh specification |
 | `docs/adr/ADR-013-feature-level-sensing-commodity-gear.md` | Commodity WiFi (RSSI) sensing |
+
+---
+
+## Appendix: Secret Hygiene and Credential Rotation
+
+- Never commit `.env`, `.pem`, `.key`, or other secret files. This repository uses `.gitignore` to exclude them and GitHub Actions secrets for CI/CD.
+- If you reuse passwords or tokens across services (including Kilo Code, cloud providers, or Docker registries), rotate them after any third-party BI or analytics incident.
+- Review `example.env` for placeholder values only. Replace them with secrets managed outside version control.
+- For deployments, prefer Docker secrets, Kubernetes secrets, or a vault solution over environment variables in long-running processes.
