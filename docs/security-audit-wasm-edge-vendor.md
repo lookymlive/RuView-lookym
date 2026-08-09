@@ -264,3 +264,13 @@ The following CRITICAL and HIGH issues were fixed directly in source files:
 5. **M-06**: Added compile-time assertion in `spt_micro_hnsw.rs`
 
 H-03 (rvf.rs patch_signature) is std-only builder code and was not fixed to avoid scope creep; a bounds check should be added before the builder is used in CI/CD pipelines.
+
+---
+
+## Context: Third-Party BI Incident Awareness (2026-08-09)
+
+On 2026-08-06, Kilo Code's business intelligence provider Metabase notified users of a security incident. While this audit covers on-device WASM modules and does not assess Metabase or external analytics pipelines, teams using RuView with shared cloud credentials should treat this as a reminder to:
+
+- Audit any BI, telemetry, or analytics credentials reused across deployments.
+- Rotate tokens and review session history in downstream services.
+- Keep secret scanning enabled in CI/CD (this repo already runs TruffleHog, GitLeaks, detect-secrets, Bandit, Semgrep, Trivy, Grype, Docker Scout, Checkov, Terrascan, and KICS).
