@@ -89,10 +89,16 @@ Perfect for disaster response, elderly care, smart buildings, and research.
 ### Option 1: Docker (Quickest)
 
 ```bash
-docker run -p 3000:3000 \
-  -e SIMULATE_CSI=true \
-  studioolookym/ruviews:latest
+# Usando pnpm para proyectos JS dentro del repo:
+pnpm install
+
+# Levantar el stack simulado (no requiere hardware):
+cd docker
+CSI_SOURCE=simulated docker-compose up
+# Abrir http://localhost:4000/ui/index.html
 ```
+
+> Nota: Si usás Windows PowerShell, antecedé las variables con `$env:` (`$env:CSI_SOURCE="simulated"`). Los puertos expuestos son `4000` (API), `4001` (WebSocket) y `5001` (UI).
 
 ### Option 2: Live Sensing with ESP32-S3 hardware ($9)
 
