@@ -2,6 +2,8 @@
 
 Covers every way to build, run, and deploy the system -- from a zero-hardware verification to a full ESP32 mesh with 3D visualization.
 
+> **Package manager note:** this project now prefers `pnpm` for JavaScript/TypeScript components. Use `pnpm install` instead of `npm install`, and `pnpm <script>` instead of `npx` or `npm run` where applicable.
+
 ---
 
 ## Table of Contents
