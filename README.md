@@ -85,6 +85,7 @@ Perfect for disaster response, elderly care, smart buildings, and research.
 - **Python 3.9+** — For v1 reference or proof validation
 - **ESP-IDF v5.4** — For firmware builds
 - **Docker** — Optional, for containerized deployment
+- **pnpm** — Preferred package manager for JS/TS components in this repo
 
 ### Option 1: Docker (Quickest)
 
