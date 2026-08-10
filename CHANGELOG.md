@@ -13,6 +13,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Daily incremental commit series to maintain active GitHub contribution graph.
 - Continued security awareness documentation following the Kilo Code / Anaconda Metabase incident.
 
+## [2026-08-10] — Daily maintenance commits
+
+### Added
+- Daily incremental commit series to maintain active GitHub contribution graph.
+- Continued security awareness documentation following the Kilo Code / Anaconda Metabase incident.
+- Migrated web `package.json` files to `pnpm` as the preferred package manager.
+- New `docs/USER_MANUAL.md` with step-by-step usage guide for Docker and ESP32 setups.
+- New `docs/NEIGHBOR_DETECTION.md` explaining how to detect presence without neighbor WiFi access.
+- New `docs/FAQ.md` with common questions about installation, hardware, privacy, and troubleshooting.
+- Updated `README.md` with Docker + pnpm quickstart instructions.
+
 ## [2026-08-09] — Daily maintenance commits
 
 ### Added

@@ -2,7 +2,7 @@
 
 This folder contains 44 Architecture Decision Records (ADRs) that document every significant technical choice in the RuView / WiFi-DensePose project.
 
-> Daily maintenance note: ADR index reviewed 2026-08-09
+> Daily maintenance note: ADR index reviewed 2026-08-10
 
 ## Why ADRs?
 
