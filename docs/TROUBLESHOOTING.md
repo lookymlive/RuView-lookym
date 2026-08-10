@@ -2,6 +2,8 @@
 
 Known issues and fixes from the rebase-to-upstream branch (upstream #301).
 
+> Daily maintenance note: troubleshooting reviewed 2026-08-10
+
 ---
 
 ## 1. Node not appearing in /api/v1/nodes
