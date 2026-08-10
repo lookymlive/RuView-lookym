@@ -267,7 +267,7 @@ H-03 (rvf.rs patch_signature) is std-only builder code and was not fixed to avoi
 
 ---
 
-## Context: Third-Party BI Incident Awareness (2026-08-09)
+## Context: Third-Party BI Incident Awareness (2026-08-10)
 
 On 2026-08-06, Kilo Code's business intelligence provider Metabase notified users of a security incident. While this audit covers on-device WASM modules and does not assess Metabase or external analytics pipelines, teams using RuView with shared cloud credentials should treat this as a reminder to:
 
