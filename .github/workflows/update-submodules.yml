@@ -2,8 +2,8 @@ name: Update vendor submodules
 
 on:
   schedule:
-    - cron: '0 */6 * * *'  # Every 6 hours
-  workflow_dispatch:        # Manual trigger
+    # - cron: '0 */6 * * *'  # Every 6 hours
+  workflow_dispatch:        # Manual trigger only — schedule paused 2026-08-10
 
 permissions:
   contents: write
