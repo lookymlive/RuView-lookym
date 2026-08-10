@@ -2,6 +2,7 @@
   "name": "ruview-desktop-ui",
   "private": true,
   "version": "0.4.4",
+  "packageManager": "pnpm@9.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",

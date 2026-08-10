@@ -4,7 +4,8 @@
   "description": "Vite + Lit dashboard for the nvsim NV-diamond magnetometer pipeline simulator (ADR-092).",
   "type": "module",
   "private": true,
-  "daily-maintenance": "2026-08-08",
+  "packageManager": "pnpm@9.0.0",
+  "daily-maintenance": "2026-08-10",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
