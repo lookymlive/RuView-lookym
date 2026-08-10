@@ -2,7 +2,9 @@
 
 WiFi DensePose turns commodity WiFi signals into real-time human pose estimation, vital sign monitoring, and presence detection. This guide walks you through installation, first run, API usage, hardware setup, and model training.
 
-> Daily maintenance note: user guide reviewed 2026-08-09
+> Daily maintenance note: user guide reviewed 2026-08-10
+
+> **Package manager:** este proyecto usa `pnpm` en sus componentes web. Donde veas referencias a `npm install`, reemplazalas por `pnpm install`. Los scripts (`pnpm dev`, `pnpm build`, etc.) son equivalentes.
 
 ---
 
