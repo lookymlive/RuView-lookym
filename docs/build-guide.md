@@ -693,3 +693,4 @@ python3 -m http.server 3000 --directory ui
 - If you reuse passwords or tokens across services (including Kilo Code, cloud providers, or Docker registries), rotate them after any third-party BI or analytics incident.
 - Review `example.env` for placeholder values only. Replace them with secrets managed outside version control.
 - For deployments, prefer Docker secrets, Kubernetes secrets, or a vault solution over environment variables in long-running processes.
+
