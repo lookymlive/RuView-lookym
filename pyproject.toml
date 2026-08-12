@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "wifi-densepose"
 version = "1.2.1"
 description = "WiFi-based human pose estimation using CSI data and DensePose neural networks"
-# Daily maintenance metadata (incremental #7)
+# Daily maintenance metadata (daily update 2026-08-12)
 readme = "README.md"
 license = "MIT"
 authors = [
@@ -395,3 +395,4 @@ sqlalchemy.url = "postgresql://localhost/wifi_densepose"
 version_variable = "src/__init__.py:__version__"
 version_pattern = "pyproject.toml:version = \"{version}\""
 build_command = "pip install build && python -m build"
+
