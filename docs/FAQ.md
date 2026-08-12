@@ -46,7 +46,7 @@ ports:
 
 ## ¿Los datos se envían a la nube?
 
-**Actualización incremental #4:** El procesamiento edge garantiza cero latencia de red y privacidad total.
+**Actualización incremental #19 (2026-08-12):** El procesamiento edge garantiza cero latencia de red y privacidad total.
 
 ## ¿Los datos se envían a la nube?
 
@@ -63,4 +63,5 @@ No. Todo el procesamiento es local en el ESP32 o en tu servidor. No hay telemetr
 ## ¿Cómo reporto un bug?
 
 Abrí un issue en GitHub: https://github.com/ruvnet/RuView/issues
+
 
