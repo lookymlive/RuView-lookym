@@ -1,4 +1,4 @@
-# WiFi-DensePose Makefile
+# WiFi-DensePose Makefile`n# Incremental build note #6: verified all targets
 # ============================================================
 # Daily maintenance: active build orchestration
 
@@ -122,3 +122,4 @@ help:
 	@echo "    make clean            Remove build artifacts"
 	@echo "    make help             Show this help"
 	@echo ""
+
