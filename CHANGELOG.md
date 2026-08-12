@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Incremental commit series entry #3 for active GitHub contribution graph.
+
+## [Unreleased]
+
 ## [2026-08-10] — Daily maintenance commits
 
 ### Added
@@ -463,6 +468,11 @@ Model release (no new firmware binary). Firmware remains at v0.6.0-esp32.
 ## [Unreleased]
 
 ### Added
+- Incremental commit series entry #3 for active GitHub contribution graph.
+
+## [Unreleased]
+
+### Added
 - **QEMU ESP32-S3 testing platform (ADR-061)** — 9-layer firmware testing without hardware
   - Mock CSI generator with 10 physics-based scenarios (empty room, walking, fall, multi-person, etc.)
   - Single-node QEMU runner with 16-check UART validation
@@ -744,3 +754,4 @@ Major release: complete Rust sensing server, full DensePose training pipeline, R
 [2.0.0]: https://github.com/ruvnet/wifi-densepose/compare/v1.1.0...v2.0.0
 [1.1.0]: https://github.com/ruvnet/wifi-densepose/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/ruvnet/wifi-densepose/releases/tag/v1.0.0
+
