@@ -6,7 +6,7 @@ Este documento es el **primer paso obligatorio** antes de comprar 4 ESP32. El ob
 
 ---
 
-## 1. Hardware necesario (mínimo)
+## 1. Hardware necesario (mínimo)`n`n> Nota incremental #11: verificación CSI revisada.
 
 | Componente | Cantidad | Precio aprox |
 |------------|----------|--------------|
@@ -306,3 +306,4 @@ El script:
 - Genera un veredicto: CSI_REAL o CSI_FAKE/SIMULATED.
 
 **Veredicto esperado:** `CSI_REAL` con al menos 10 paquetes válidos en 30 segundos.
+
