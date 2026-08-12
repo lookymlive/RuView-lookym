@@ -2,7 +2,7 @@
 
 Known issues and fixes from the rebase-to-upstream branch (upstream #301).
 
-> Daily maintenance note: troubleshooting reviewed 2026-08-10 (incremental #12)
+> Daily maintenance note: troubleshooting reviewed 2026-08-12
 
 ---
 
@@ -122,4 +122,5 @@ ssh thyhack@100.90.238.87
 - Rotate every reused credential as soon as a BI or analytics provider reports an incident.
 - Audit GitHub Actions secrets, Docker registry tokens, Kubernetes kubeconfigs, and any `.env` files outside version control.
 - Prefer short-lived tokens or secrets-manager integrations over static passwords in long-lived environments.
+
 
