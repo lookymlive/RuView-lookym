@@ -4,7 +4,7 @@ This document contains the detailed sections that were extracted from [README.md
 
 ---
 
-## Latest Additions`n`n> Incremental entry #13: extended documentation maintained (2026-08-12).
+## Latest Additions`n`n> Incremental entry #37: extended documentation maintained (2026-08-13).
 
 ### Real-Time Dense Point Cloud (NEW)
 
