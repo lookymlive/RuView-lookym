@@ -756,3 +756,5 @@ Major release: complete Rust sensing server, full DensePose training pipeline, R
 [1.0.0]: https://github.com/ruvnet/wifi-densepose/releases/tag/v1.0.0
 
 
+
+
