@@ -692,5 +692,7 @@ python3 -m http.server 3000 --directory ui
 - Never commit `.env`, `.pem`, `.key`, or other secret files. This repository uses `.gitignore` to exclude them and GitHub Actions secrets for CI/CD.
 - If you reuse passwords or tokens across services (including Kilo Code, cloud providers, or Docker registries), rotate them after any third-party BI or analytics incident.
 - Review `example.env` for placeholder values only. Replace them with secrets managed outside version control.
-- For deployments, prefer Docker secrets, Kubernetes secrets, or a vault solution over environment variables in long-running processes.
+ - For deployments, prefer Docker secrets, Kubernetes secrets, or a vault solution over environment variables in long-running processes.
+
+> Daily maintenance note: build guide reviewed 2026-08-14
 
