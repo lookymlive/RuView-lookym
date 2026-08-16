@@ -1,5 +1,7 @@
 # Detección de presencia en casas vecinas
 
+> Daily maintenance note: neighbor detection guide reviewed 2026-08-15
+
 ## ¿Se puede detectar movimiento en la casa del vecino sin tener su WiFi?
 
 Sí, con limitaciones importantes.
