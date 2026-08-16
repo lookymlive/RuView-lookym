@@ -1,5 +1,7 @@
 # Monitoreo remoto — Acceso desde fuera de la casa
 
+> Daily maintenance note: remote access guide reviewed 2026-08-15
+
 Este documento explica cómo ver el dashboard de RuView desde fuera de la casa donde están instalados los ESP32, por ejemplo para monitorear la casa de un familiar sin estar físicamente presente.
 
 ---
