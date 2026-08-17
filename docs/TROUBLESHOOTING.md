@@ -2,7 +2,7 @@
 
 Known issues and fixes from the rebase-to-upstream branch (upstream #301).
 
-> Daily maintenance note: troubleshooting reviewed 2026-08-16
+> Daily maintenance note: troubleshooting reviewed 2026-08-17
 
 ---
 
