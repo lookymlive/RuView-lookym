@@ -1,6 +1,6 @@
 # Distributed Setup Guide — 4-Node Home WiFi Sensing with RuView
 
-> Daily maintenance note: distributed setup guide reviewed 2026-08-15
+> Daily maintenance note: distributed setup guide reviewed 2026-08-16
 
 This guide explains how to deploy **4 ESP32-S3 nodes** in a home to enable WiFi-based sensing with RuView. You can aggregate data via a **Raspberry Pi 5** or a laptop.
 
