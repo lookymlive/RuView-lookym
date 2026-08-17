@@ -4,7 +4,7 @@ Guía paso a paso para instalar, configurar y usar RuView sin hardware especiali
 
 ---
 
-## 1. Requisitos previos`n`n> Nota incremental #51: documentación de usuario actualizada (2026-08-15).
+## 1. Requisitos previos`n`n> Nota incremental #71: documentación de usuario actualizada (2026-08-16).
 
 - Docker Desktop instalado y corriendo en Windows
 - PowerShell 7+ o terminal compatible
