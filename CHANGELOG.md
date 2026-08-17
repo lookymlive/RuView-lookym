@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Incremental commit series entry #3 for active GitHub contribution graph.
 - Daily maintenance markers update for 2026-08-15 (series #47-61).
 - Daily maintenance markers update for 2026-08-16 (series #67-81).
+- Daily maintenance markers update for 2026-08-17 (series #83-97).
 
 ## [Unreleased]
 
