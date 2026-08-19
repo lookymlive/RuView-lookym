@@ -1,5 +1,5 @@
 # Core dependencies
-# Daily maintenance note: dependency pins reviewed (2026-08-18)
+# Daily maintenance note: dependency pins reviewed (2026-08-19)
 numpy>=1.21.0
 scipy>=1.7.0
 torch>=1.12.0
