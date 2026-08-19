@@ -694,5 +694,5 @@ python3 -m http.server 3000 --directory ui
 - Review `example.env` for placeholder values only. Replace them with secrets managed outside version control.
  - For deployments, prefer Docker secrets, Kubernetes secrets, or a vault solution over environment variables in long-running processes.
 
-> Daily maintenance note: build guide reviewed 2026-08-17
+> Daily maintenance note: build guide reviewed 2026-08-18
 
