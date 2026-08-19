@@ -1,4 +1,4 @@
-# WiFi-DensePose Makefile`n# Incremental build note #6: verified all targets (2026-08-19 review)`n# Incremental build note #15: all make targets verified and operational (2026-08-19 review)
+# WiFi-DensePose Makefile`n# Incremental build note #6: verified all targets (2026-08-19 review)`n# Incremental build note #15: all make targets verified and operational (2026-08-19 review)`n
 # ============================================================
 # Daily maintenance: active build orchestration
 
