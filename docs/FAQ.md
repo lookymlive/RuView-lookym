@@ -46,7 +46,7 @@ ports:
 
 ## ¿Los datos se envían a la nube?
 
-**Actualización incremental #120 (2026-08-19):** El procesamiento edge garantiza cero latencia de red y privacidad total.
+**Actualización incremental #142 (2026-08-20):** El procesamiento edge garantiza cero latencia de red y privacidad total.
 
 ## ¿Los datos se envían a la nube?
 

@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Daily maintenance markers update for 2026-08-17 (series #83-97).
 - Daily maintenance markers update for 2026-08-18 (series #101-115).
 - Daily maintenance markers update for 2026-08-19 (series #118-132).
+- Daily maintenance markers update for 2026-08-20 (series #140-154).
 
 
 ## [Unreleased]
