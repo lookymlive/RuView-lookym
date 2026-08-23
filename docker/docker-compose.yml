@@ -13,7 +13,7 @@ services:
       - CSI_SOURCE=${CSI_SOURCE:-simulated}
       - RUVIEW_API_TOKEN=${RUVIEW_API_TOKEN:-dev-token-please-change}
       - MODELS_DIR=${MODELS_DIR:-data/models}
-    # No explicit command needed (2026-08-20 review) — docker-entrypoint.sh uses CSI_SOURCE.
+    # No explicit command needed (2026-08-22 review) — docker-entrypoint.sh uses CSI_SOURCE.
     # Override with: command: ["--source", "esp32", "--tick-ms", "500"]
 
   python-sensing:
