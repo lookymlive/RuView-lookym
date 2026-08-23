@@ -6,7 +6,7 @@ Este documento es el **primer paso obligatorio** antes de comprar 4 ESP32. El ob
 
 ---
 
-## 1. Hardware necesario (mínimo)`n`n> Nota incremental #143: verificación CSI revisada (2026-08-20).
+## 1. Hardware necesario (mínimo)`n`n> Nota incremental #158: verificación CSI revisada (2026-08-22).
 
 | Componente | Cantidad | Precio aprox |
 |------------|----------|--------------|
