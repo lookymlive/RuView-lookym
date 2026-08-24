@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Daily maintenance markers update for 2026-08-19 (series #118-132).
 - Daily maintenance markers update for 2026-08-20 (series #140-154).
 - Daily maintenance markers update for 2026-08-22 (series #155-169).
+- Production-readiness improvements: docker-compose healthchecks, monitoring rules, startup scripts, Rust server hardening, tests, examples, and docs (2026-08-23).
 
 
 ## [Unreleased]
