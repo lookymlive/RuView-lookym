@@ -5148,6 +5148,10 @@ async fn main() {
             axum::http::header::CACHE_CONTROL,
             HeaderValue::from_static("no-cache, no-store, must-revalidate"),
         ))
+        .layer(tower_http::limit::RequestBodyLimitLayer::new(
+            1024 * 1024,
+        ))
+        .layer(tower_http::catch_panic::PanicLayer::new())
         // Opt-in bearer-token auth on `/api/v1/*` (#443). When `RUVIEW_API_TOKEN`
         // is unset/empty the middleware is a no-op — the default stays
         // LAN-mode-friendly. `/health*`, `/ws/sensing`, and `/ui/*` are never
