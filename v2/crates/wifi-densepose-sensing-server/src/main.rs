@@ -25,7 +25,6 @@ mod vital_signs;
 use wifi_densepose_sensing_server::{graph_transformer, trainer, dataset, embedding};
 
 use std::collections::{HashMap, VecDeque};
-use ruvector_mincut::{DynamicMinCut, MinCutBuilder};
 use std::net::SocketAddr;
 use std::path::PathBuf;
 use std::sync::Arc;
@@ -54,6 +53,11 @@ use tracing::{info, warn, debug, error};
 use rvf_container::{RvfBuilder, RvfContainerInfo, RvfReader, VitalSignConfig};
 use rvf_pipeline::ProgressiveLoader;
 use vital_signs::{VitalSignDetector, VitalSigns};
+
+use prometheus::{
+    Counter, CounterVec, Encoder, Gauge, Histogram, HistogramOpts, Opts, Registry,
+    TextEncoder,
+};
 
 // ADR-022 Phase 3: Multi-BSSID pipeline integration
 use wifi_densepose_wifiscan::{
@@ -647,6 +651,21 @@ struct AppStateInner {
     multistatic_fuser: MultistaticFuser,
     /// SVD-based room field model for eigenvalue person counting (None until calibration).
     field_model: Option<FieldModel>,
+    // ── Prometheus metrics ──────────────────────────────────────────────
+    /// Prometheus metric registry for /metrics export.
+    prometheus_registry: Registry,
+    /// Total CSI frames received (by source: esp32, wifi, simulated).
+    frames_received: CounterVec,
+    /// Total frames dropped due to parse/validation errors.
+    frames_dropped: Counter,
+    /// Model inference latency histogram (seconds).
+    inference_duration: Histogram,
+    /// Connected WebSocket clients.
+    ws_clients: Gauge,
+    /// Total pose detections emitted.
+    pose_detections: CounterVec,
+    /// Total vital sign estimates emitted.
+    vital_sign_estimates: CounterVec,
 }
 
 /// If no ESP32 frame arrives within this duration, source reverts to offline.
@@ -807,6 +826,15 @@ fn parse_wasm_output(buf: &[u8]) -> Option<WasmOutputPacket> {
 // ── ESP32 UDP frame parser ───────────────────────────────────────────────────
 
 fn parse_esp32_frame(buf: &[u8]) -> Option<Esp32Frame> {
+    const MAX_FRAME_SIZE: usize = 4096;
+    const MAX_ANTENNAS: u8 = 8;
+    const MAX_SUBCARRIERS: u8 = 128;
+
+    if buf.len() > MAX_FRAME_SIZE {
+        warn!("Dropping oversized ESP32 frame: {} bytes (max {})", buf.len(), MAX_FRAME_SIZE);
+        return None;
+    }
+
     if buf.len() < 20 {
         return None;
     }
@@ -816,32 +844,44 @@ fn parse_esp32_frame(buf: &[u8]) -> Option<Esp32Frame> {
         return None;
     }
 
-    // Frame layout (must match firmware csi_collector.c):
-    //   [0..3]   magic (u32 LE)
-    //   [4]      node_id (u8)
-    //   [5]      n_antennas (u8)
-    //   [6..7]   n_subcarriers (u16 LE)
-    //   [8..11]  freq_mhz (u32 LE)
-    //   [12..15] sequence (u32 LE)
-    //   [16]     rssi (i8)
-    //   [17]     noise_floor (i8)
-    //   [18..19] reserved
-    //   [20..]   I/Q data
     let node_id = buf[4];
     let n_antennas = buf[5];
     let n_subcarriers = buf[6];
     let freq_mhz = u16::from_le_bytes([buf[8], buf[9]]);
     let sequence = u32::from_le_bytes([buf[10], buf[11], buf[12], buf[13]]);
     let rssi_raw = buf[14] as i8;
-    // Fix RSSI sign: ensure it's always negative (dBm convention).
     let rssi = if rssi_raw > 0 { rssi_raw.saturating_neg() } else { rssi_raw };
     let noise_floor = buf[15] as i8;
+
+    if n_antennas == 0 || n_subcarriers == 0 {
+        warn!("Dropping ESP32 frame with zero antennas or subcarriers: node={}", node_id);
+        return None;
+    }
+
+    if n_antennas > MAX_ANTENNAS || n_subcarriers > MAX_SUBCARRIERS {
+        warn!(
+            "Dropping ESP32 frame with excessive antennas/subcarriers: node={}, ant={}, sub={}",
+            node_id, n_antennas, n_subcarriers
+        );
+        return None;
+    }
+
+    let valid_bands = [(2400, 2500), (4900, 5900)];
+    let in_valid_band = valid_bands.iter().any(|(lo, hi)| (*lo..=*hi).contains(&freq_mhz));
+    if !in_valid_band {
+        warn!("Dropping ESP32 frame with invalid freq_mhz={}: node={}", freq_mhz, node_id);
+        return None;
+    }
 
     let iq_start = 20;
     let n_pairs = n_antennas as usize * n_subcarriers as usize;
     let expected_len = iq_start + n_pairs * 2;
 
     if buf.len() < expected_len {
+        warn!(
+            "Dropping truncated ESP32 frame: node={}, expected={}, got={}",
+            node_id, expected_len, buf.len()
+        );
         return None;
     }
 
@@ -2838,6 +2878,19 @@ async fn health_metrics(State(state): State<SharedState>) -> Json<serde_json::Va
     }))
 }
 
+/// GET /metrics — Prometheus text exposition format.
+async fn prometheus_metrics_handler(State(state): State<SharedState>) -> impl IntoResponse {
+    let s = state.read().await;
+    let metric_families = s.prometheus_registry.gather();
+    let mut buffer = Vec::new();
+    let encoder = TextEncoder::new();
+    let _ = encoder.encode(&metric_families, &mut buffer);
+    (
+        [("Content-Type", "text/plain; version=0.0.4; charset=utf-8")],
+        buffer,
+    )
+}
+
 async fn api_info(State(state): State<SharedState>) -> Json<serde_json::Value> {
     let s = state.read().await;
     Json(serde_json::json!({
@@ -4307,12 +4360,18 @@ async fn broadcast_tick_task(state: SharedState, tick_ms: u64) {
 
 #[tokio::main]
 async fn main() {
-    // Initialize tracing
+    // Initialize tracing with optional JSON output for Docker/K8s log aggregation
+    let use_json = std::env::var("LOG_FORMAT").ok().as_deref() == Some("json");
     tracing_subscriber::fmt()
         .with_env_filter(
             tracing_subscriber::EnvFilter::try_from_default_env()
                 .unwrap_or_else(|_| "info,tower_http=debug".into()),
         )
+        .with_target(true)
+        .with_thread_ids(true)
+        .with_ansi(!use_json)
+        .with_writer(std::io::stdout)
+        .with(use_json)
         .init();
 
     let args = Args::parse();
@@ -4929,10 +4988,39 @@ async fn main() {
         } else {
             None
         },
+        // ── Prometheus metrics ──────────────────────────────────────────────
+        prometheus_registry: Registry::new(),
+        frames_received: CounterVec::new(
+            Opts::new("wifi_densepose_frames_received_total", "Total CSI frames received by source"),
+            &["source"],
+        ).unwrap(),
+        frames_dropped: Counter::with_opts(Opts::new("wifi_densepose_frames_dropped_total", "Total frames dropped due to parse/validation errors")).unwrap(),
+        inference_duration: Histogram::with_opts(
+            HistogramOpts::new("wifi_densepose_model_inference_duration_seconds", "Model inference latency in seconds"),
+        ).unwrap(),
+        ws_clients: Gauge::with_opts(Opts::new("wifi_densepose_ws_clients_connected", "Connected WebSocket clients")).unwrap(),
+        pose_detections: CounterVec::new(
+            Opts::new("wifi_densepose_pose_detections_total", "Total pose detections emitted"),
+            &["person_count"],
+        ).unwrap(),
+        vital_sign_estimates: CounterVec::new(
+            Opts::new("wifi_densepose_vital_sign_estimates_total", "Total vital sign estimates emitted"),
+            &["type"],
+        ).unwrap(),
     }));
 
+    // Register Prometheus metrics
+    {
+        let s = state.read().await;
+        let _ = s.prometheus_registry.register(Box::new(s.frames_received.clone()));
+        let _ = s.prometheus_registry.register(Box::new(s.frames_dropped.clone()));
+        let _ = s.prometheus_registry.register(Box::new(s.inference_duration.clone()));
+        let _ = s.prometheus_registry.register(Box::new(s.ws_clients.clone()));
+        let _ = s.prometheus_registry.register(Box::new(s.pose_detections.clone()));
+        let _ = s.prometheus_registry.register(Box::new(s.vital_sign_estimates.clone()));
+    }
+
     // Start background tasks based on source
-    match source {
         "esp32" => {
             tokio::spawn(udp_receiver_task(state.clone(), args.udp_port));
             tokio::spawn(broadcast_tick_task(state.clone(), args.tick_ms));
@@ -4996,6 +5084,8 @@ async fn main() {
         .route("/health/ready", get(health_ready))
         .route("/health/version", get(health_version))
         .route("/health/metrics", get(health_metrics))
+        // Prometheus metrics export
+        .route("/metrics", get(prometheus_metrics_handler))
         // API info
         .route("/api/v1/info", get(api_info))
         .route("/api/v1/status", get(health_ready))
@@ -5074,14 +5164,19 @@ async fn main() {
     info!("HTTP server listening on {http_addr}");
     info!("Open http://localhost:{}/ui/index.html in your browser", args.http_port);
 
-    // Run the HTTP server with graceful shutdown support
+    // Run the HTTP server with graceful shutdown support (SIGINT + SIGTERM)
     let shutdown_state = state.clone();
     let server = axum::serve(http_listener, http_app)
         .with_graceful_shutdown(async {
-            tokio::signal::ctrl_c()
-                .await
-                .expect("failed to install CTRL+C handler");
-            info!("Shutdown signal received");
+            let mut sigint = tokio::signal::unix::signal(tokio::signal::unix::SignalKind::interrupt())
+                .expect("failed to install SIGINT handler");
+            let mut sigterm = tokio::signal::unix::signal(tokio::signal::unix::SignalKind::terminate())
+                .expect("failed to install SIGTERM handler");
+
+            tokio::select! {
+                _ = sigint.recv() => info!("SIGINT received, shutting down gracefully..."),
+                _ = sigterm.recv() => info!("SIGTERM received, shutting down gracefully..."),
+            }
         });
 
     server.await.unwrap();
