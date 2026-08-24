@@ -51,10 +51,12 @@ wifi-densepose-wifiscan = { version = "0.3.0", path = "../wifi-densepose-wifisca
 wifi-densepose-signal = { version = "0.3.0", path = "../wifi-densepose-signal", default-features = false }
 
 # midstream — real-time introspection / low-latency tap (ADR-099 D1).
-# Two crates only, on purpose: scheduler / neural-solver / strange-loop are
-# explicitly out of scope of ADR-099 (D5).
 midstreamer-temporal-compare = "0.2"   # DTW / LCS / Edit-Distance pattern matching
 midstreamer-attractor        = "0.2"   # Lyapunov + regime classification
+
+# Prometheus metrics export
+prometheus = "0.13"
+prometheus-exporter-base = "0.3"
 
 [dev-dependencies]
 tempfile = "3.10"
