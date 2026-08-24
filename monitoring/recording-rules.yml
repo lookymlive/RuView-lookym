@@ -1,0 +1,32 @@
+groups:
+  - name: wifi-densepose.recording
+    interval: 15s
+    rules:
+      - record: wifi_densepose:http_requests_total:rate5m
+        expr: sum(rate(http_requests_total{job="wifi-densepose-app"}[5m]))
+
+      - record: wifi_densepose:http_error_rate:rate5m
+        expr: |
+          sum(rate(http_requests_total{job="wifi-densepose-app",status=~"5.."}[5m]))
+          / sum(rate(http_requests_total{job="wifi-densepose-app"}[5m])) * 100
+
+      - record: wifi_densepose:model_inference_duration:histogram_quantile
+        expr: |
+          histogram_quantile(0.95,
+            sum(rate(wifi_densepose_model_inference_duration_seconds_bucket[5m]))
+          )
+
+      - record: wifi_densepose:frames_received_total:rate5m
+        expr: sum(rate(wifi_densepose_frames_received_total[5m]))
+
+      - record: wifi_densepose:frames_dropped_total:rate5m
+        expr: sum(rate(wifi_densepose_frames_dropped_total[5m]))
+
+      - record: wifi_densepose:ws_clients_connected
+        expr: wifi_densepose_ws_clients_connected
+
+      - record: wifi_densepose:pose_detections_total:rate5m
+        expr: sum(rate(wifi_densepose_pose_detections_total[5m]))
+
+      - record: wifi_densepose:vital_sign_estimates_total:rate5m
+        expr: sum(rate(wifi_densepose_vital_sign_estimates_total[5m]))
