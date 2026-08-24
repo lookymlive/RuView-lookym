@@ -170,6 +170,31 @@ Verify the plugin structure: `bash plugins/ruview/scripts/smoke.sh`. Full detail
 
 ---
 
+## 🚀 Quick Start
+
+### Docker (Fastest)
+```bash
+cp example.env .env
+./examples/getting-started/01_docker_demo.sh
+# Open http://localhost:4000/ui/index.html
+```
+
+### Local Rust Server
+**Linux/macOS:**
+```bash
+./scripts/run-sensing-server.sh
+```
+
+**Windows (PowerShell):**
+```powershell
+.\scripts\start-sensing-server.ps1
+```
+
+### Verify Installation
+```bash
+make verify
+```
+
 ## 📄 License
 
 MIT License — see [LICENSE](LICENSE) for details.
