@@ -6,14 +6,15 @@ build-backend = "setuptools.build_meta"
 name = "wifi-densepose"
 version = "1.2.1"
 description = "WiFi-based human pose estimation using CSI data and DensePose neural networks"
-# Daily maintenance metadata (daily update 2026-08-22)
+# Daily maintenance metadata (daily update 2026-08-23)
 readme = "README.md"
 license = "MIT"
 authors = [
-    {name = "rUv", email = "ruv@ruv.net"}
+    {name = "rUv", email = "ruv@ruv.net"},
+    {name = "lookymlive", email = "lookymlive@gmail.com"}
 ]
 maintainers = [
-    {name = "rUv", email = "ruv@ruv.net"}
+    {name = "lookymlive", email = "lookymlive@gmail.com"}
 ]
 keywords = [
     "wifi",
