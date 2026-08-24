@@ -1,6 +1,6 @@
 # Core dependencies
 # Daily maintenance note: dependency pins reviewed (2026-08-20)
-numpy>=1.21.0
+numpy>=2.2.6
 scipy>=1.7.0
 torch>=1.12.0
 torchvision>=0.13.0
