@@ -17,56 +17,45 @@ jobs:
   # Code Quality and Security Checks
   # The Python codebase moved to `archive/v1/` when the runtime was rewritten in
   # Rust under `v2/`. The lint/format/type/scan checks below still run against
-  # the archive for hygiene, but with `continue-on-error: true` everywhere — the
-  # archive is frozen reference code, not active development, so a stale lint
-  # rule shouldn't gate PRs to the Rust workspace.
+  # the archive for hygiene, but the archive is frozen reference code, not active
+  # development, so stale lint rules should not gate PRs to the Rust workspace.
   code-quality:
     name: Code Quality & Security
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
     - name: Checkout code
-      continue-on-error: true
       uses: actions/checkout@v4
       with:
         fetch-depth: 0
 
     - name: Set up Python
-      continue-on-error: true
       uses: actions/setup-python@v5
       with:
         python-version: ${{ env.PYTHON_VERSION }}
         cache: 'pip'
 
     - name: Install dependencies
-      continue-on-error: true
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install black flake8 mypy bandit safety
 
     - name: Code formatting check (Black)
-      continue-on-error: true
       run: black --check --diff archive/v1/src archive/v1/tests
 
     - name: Linting (Flake8)
-      continue-on-error: true
       run: flake8 archive/v1/src archive/v1/tests --max-line-length=88 --extend-ignore=E203,W503
 
     - name: Type checking (MyPy)
-      continue-on-error: true
       run: mypy archive/v1/src --ignore-missing-imports
 
     - name: Security scan (Bandit)
       run: bandit -r archive/v1/src -f json -o bandit-report.json
-      continue-on-error: true
 
     - name: Dependency vulnerability scan (Safety)
       run: safety check --json --output safety-report.json
-      continue-on-error: true
 
     - name: Upload security reports
-      continue-on-error: true
       uses: actions/upload-artifact@v4
       if: always()
       with:
